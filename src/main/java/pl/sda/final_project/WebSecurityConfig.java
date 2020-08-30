@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {//konfiguracja zabezpieczeń
         http.authorizeRequests()
-                .antMatchers("/register/*")// /register/something   -> wpusci/register/something/somtehing   ->nie wpusci
+                .antMatchers("/register","/register/*")// /register/something   -> wpusci/register/something/somtehing   ->nie wpusci
                 .permitAll()
                 .antMatchers("/login")
                 .permitAll()
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .loginProcessingUrl("login-proces")// to jest url na który zostaną wysłane dane do logowania
+                .loginProcessingUrl("/login-proces")// to jest url na który zostaną wysłane dane do logowania
                 .failureUrl("/login?error=1")
                 .defaultSuccessUrl("/")
                 .and()
