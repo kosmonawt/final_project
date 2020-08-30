@@ -20,10 +20,13 @@ import java.util.List;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DataSource dataSource;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final DataSource dataSource;
+    private final PasswordEncoder passwordEncoder;
+
+    public WebSecurityConfig(DataSource dataSource, PasswordEncoder passwordEncoder) {
+        this.dataSource = dataSource;
+        this.passwordEncoder = passwordEncoder;
+    }
 
 
     @Override
@@ -81,10 +84,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
     }
 }

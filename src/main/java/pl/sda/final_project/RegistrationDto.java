@@ -3,7 +3,6 @@ package pl.sda.final_project;
 
 public class RegistrationDto {
 
-
     private String firstName;
     private String lastName;
     private String city;
