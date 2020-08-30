@@ -28,12 +28,11 @@ public class User extends BaseEntity {
 
     public static User apply(RegistrationDto registrationDto, String pswdHash) {
         User user = new User();
-        Address address = Address.apply(registrationDto);
         user.firstName = registrationDto.getFirstName();
         user.lastName = registrationDto.getLastName();
         user.login = registrationDto.getLogin();
         user.password = pswdHash;
-        user.address = address;
+        user.address = Address.apply(registrationDto);
         user.birthDate = LocalDate.parse(registrationDto.getBirthDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return user;
     }

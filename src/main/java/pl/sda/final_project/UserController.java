@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/register")
     public String registrationForm(Model model) {
@@ -19,6 +24,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registrationEffect(RegistrationDto registrationDto) {
+        userService.registerUser(registrationDto);
         return "redirect:/login";
 
     }
