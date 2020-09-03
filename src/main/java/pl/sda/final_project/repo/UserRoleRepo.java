@@ -1,7 +1,8 @@
-package pl.sda.final_project;
+package pl.sda.final_project.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import pl.sda.final_project.model.user.UserRole;
 
 public interface UserRoleRepo extends JpaRepository<UserRole, Long> {
     @Query("select case when count(u)> 0 then true else false end from UserRole u where lower(u.roleName) like lower(?1)")

@@ -1,7 +1,8 @@
-package pl.sda.final_project;
+package pl.sda.final_project.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import pl.sda.final_project.model.user.User;
 
 import java.util.Optional;
 

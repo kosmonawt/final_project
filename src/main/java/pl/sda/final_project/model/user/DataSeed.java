@@ -1,7 +1,8 @@
-package pl.sda.final_project;
+package pl.sda.final_project.model.user;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
+import pl.sda.final_project.repo.UserRoleRepo;
 
 @Component
 public class DataSeed implements InitializingBean {
