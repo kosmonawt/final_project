@@ -1,5 +1,7 @@
 package pl.sda.final_project.model.user;
 
+import org.springframework.data.domain.Pageable;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -19,6 +21,7 @@ public class BaseEntity {
         BaseEntity that = (BaseEntity) o;
         return Objects.equals(id, that.id);
     }
+
 
     @Override
     public int hashCode() {

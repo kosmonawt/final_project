@@ -1,5 +1,6 @@
 package pl.sda.final_project.controller;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.final_project.dto.ProductDto;
 import pl.sda.final_project.model.product.ProductType;
-import pl.sda.final_project.repo.ProductCategoryRepo;
 import pl.sda.final_project.service.ProductCategoryService;
 import pl.sda.final_project.service.ProductService;
 
@@ -25,9 +25,10 @@ public class ProductController {
 
 
     @GetMapping("/all")
-    public ModelAndView getProducts() {
+    public ModelAndView getProducts(Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("productList");
-        modelAndView.addObject("products", productService.findProducts());
+        modelAndView.addObject("products", productService.findProducts(pageable));
+
         return modelAndView;
 
     }

@@ -1,5 +1,6 @@
 package pl.sda.final_project.service;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.sda.final_project.dto.ProductDto;
 import pl.sda.final_project.model.product.ProductCategoryEntity;
@@ -28,8 +29,8 @@ public class ProductService {
         productRepo.save(productEntityToSave);
     }
 
-    public List<ProductDto> findProducts() {
-        return productRepo.findAll().stream()
+    public List<ProductDto> findProducts(Pageable pageable) {
+        return productRepo.findAll(pageable).stream()
                 .map(ProductDto::apply)
                 .collect(Collectors.toList());
     }
