@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import pl.sda.final_project.dto.ProductDto;
 import pl.sda.final_project.model.product.ProductCategoryEntity;
 import pl.sda.final_project.model.product.ProductEntity;
-import pl.sda.final_project.repo.ProductCategoryRepo;
 import pl.sda.final_project.repo.ProductRepo;
 
 import java.util.List;
@@ -14,15 +13,16 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private ProductRepo productRepo;
-    private ProductCategoryRepo productCategoryRepo;
+    private ProductCategoryService productCategoryService;
 
-    public ProductService(ProductRepo productRepo) {
+    public ProductService(ProductRepo productRepo, ProductCategoryService productCategoryService) {
         this.productRepo = productRepo;
+        this.productCategoryService = productCategoryService;
     }
 
     public void saveProduct(ProductDto productDto) {
         ProductEntity productEntityToSave = ProductEntity.apply(productDto);
-        ProductCategoryEntity category = productCategoryRepo.findById(productDto.getProductCategoryId())
+        ProductCategoryEntity category = productCategoryService.findCategoryById(productDto.getProductCategoryId())
                 .orElseThrow(() -> new RuntimeException("Can't find category"));
         productEntityToSave.setCategory(category);
         productRepo.save(productEntityToSave);
@@ -33,4 +33,6 @@ public class ProductService {
                 .map(ProductDto::apply)
                 .collect(Collectors.toList());
     }
+
+
 }
