@@ -37,7 +37,7 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("productAdd");
         ProductDto productDto = new ProductDto();
         modelAndView.addObject("productToSave", productDto);
-        modelAndView.addObject("productCategory", productCategoryService.findProductCategory());
+        modelAndView.addObject("productCategories", productCategoryService.findProductCategory());
         modelAndView.addObject("productTypes", ProductType.values());
         return modelAndView;
     }

@@ -23,8 +23,8 @@
     <input type="text" th:field="*{productDescription}" placeholder="Opis produktu"><br>
     <input type="text" th:field="*{productImageUrl}" placeholder="Image Url"><br>
 
-    <select class="form-control" type="text" th:field="*{productCategory}" placeholder="Kategoria produktu"><br>
-        <option th:each="pc : ${p}" th:text="${pc.plName}" th:value="${c.name()}"></option>
+    <select class="form-control" type="text" th:field="*{productCategoryId}" placeholder="Kategoria produktu"><br>
+        <option th:each="pc : ${productCategories}" th:text="${pc.productCategoryTitle}" th:value="${pc.productCategoryId}"></option>
     </select>
 
     <input type="number" th:field="*{productPrice}" placeholder="Cena produktu"><br>

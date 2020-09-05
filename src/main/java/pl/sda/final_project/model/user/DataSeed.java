@@ -13,7 +13,8 @@ public class DataSeed implements InitializingBean {
     private UserRoleRepo userRoleRepo;
     private ProductCategoryRepo productCategoryRepo;
 
-    public DataSeed(UserRoleRepo userRoleRepo) {
+    public DataSeed(UserRoleRepo userRoleRepo, ProductCategoryRepo productCategoryRepo) {
+        this.productCategoryRepo = productCategoryRepo;
         this.userRoleRepo = userRoleRepo;
     }
 
