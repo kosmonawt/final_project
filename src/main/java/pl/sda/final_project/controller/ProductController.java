@@ -5,11 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.final_project.dto.ProductDto;
-import pl.sda.final_project.model.product.ProductEntity;
 import pl.sda.final_project.service.ProductService;
 
 import java.math.BigDecimal;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -37,7 +35,7 @@ public class ProductController {
         productDto2.setAuthorSurname("asdasas");
         productDto2.setProductPrice(BigDecimal.valueOf(211432553));
         productDto2.setProductDescription("sdgdsdscvdsv");
-        productDto2.setProductTitle("product1");
+        productDto2.setProductTitle("product2");
         productDto2.setProductCategoryTitle("Category");
 
         return List.of(productDto, productDto2);
