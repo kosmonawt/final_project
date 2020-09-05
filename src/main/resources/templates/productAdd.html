@@ -14,21 +14,30 @@
 <body>
 
 <form action="/product/add" method="post" th:object="${productToSave}">
-    <input type="text" th:field="*{productTitle}" placeholder="Tytuł produktu"> <br>
+    <div class="form-group">
+        <label for="pTitle">Tytul produktu</label>
+        <input class="form-control" id="pTitle" type="text" th:field="*{productTitle}" placeholder="Tytuł produktu">
+        <br>
+    </div>
+
     <input type="text" th:field="*{productDescription}" placeholder="Opis produktu"><br>
     <input type="text" th:field="*{productImageUrl}" placeholder="Image Url"><br>
-    <input type="text" th:field="*{productCategoryTitle}" placeholder="Kategoria produktu"><br>
+
+    <select class="form-control" type="text" th:field="*{productCategory}" placeholder="Kategoria produktu"><br>
+        <option th:each="pc : ${p}" th:text="${pc.plName}" th:value="${c.name()}"></option>
+    </select>
+
     <input type="number" th:field="*{productPrice}" placeholder="Cena produktu"><br>
-    <label>
-        <select type="text" th:field="*{productType}" placeholder="Typ produktu"><br>
-            <option th:each="c : ${productTypes}" th:text="${c.plName}" th:value="${c.name()}"></option>
-        </select>
-    </label><br>
+
+    <select class="form-control" type="text" th:field="*{productType}" placeholder="Typ produktu"><br>
+        <option th:each="c : ${productTypes}" th:text="${c.plName}" th:value="${c.name()}"></option>
+    </select>
+    <br>
     <input type="text" th:field="*{authorName}" placeholder="Imie autora"><br>
     <input type="text" th:field="*{authorSurname}" placeholder="Nazwisko autora"><br>
-    <button type="submit">Dodaj produkt</button>
+    <button class="btn-danger" type="submit">Dodaj produkt</button>
     <br>
-    <button type="reset">RESET</button>
+    <button class="btn-info" type="reset">RESET</button>
 </form>
 
 </body>

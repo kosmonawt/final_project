@@ -13,4 +13,13 @@ public class ProductCategoryEntity extends BaseEntity {
         return title;
     }
 
+
+    public ProductCategoryEntity(String title) {
+        this.title = title;
+    }
+
+    public ProductCategoryEntity() {
+    }
+
+
 }
