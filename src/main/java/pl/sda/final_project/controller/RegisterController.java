@@ -29,7 +29,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String registrationEffect(@Valid RegistrationDto registrationDto  /*, BindingResult bindingResult*/) {
+    public String registrationEffect(RegistrationDto registrationDto  /*, BindingResult bindingResult*/) {
   /*      if (bindingResult.hasErrors()) {
             return "registrationPage";
         }*/

@@ -1,9 +1,7 @@
 package pl.sda.final_project.dto;
 
 import java.math.BigDecimal;
-
 public class ProductDto {
-
     private String productTitle;
     private String productDescription;
     private String productImageUrl;
