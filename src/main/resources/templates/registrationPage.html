@@ -3,24 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+
+
 </head>
 <body>
 
 <form action="/register" method="post" th:object="${registrationObject}">
 
-    <input type="text" th:field="*{firstName}" placeholder="Imie"> <br>
-    <input type="text" th:field="*{lastName}" placeholder="Nazwisko"><br>
-    <input type="text" th:field="*{city}" placeholder="Miasto"><br>
-    <input type="text" th:field="*{street}" placeholder="Ulica"><br>
-    <select type="text" th:field="*{country}" placeholder="Kraj"><br>
-        <option th:each="c : ${countries}" th:text="${c.plName}" th:value="${c.symbol}"></option>
-    </select><br>
-    <input type="text" th:field="*{zipCode}" placeholder="Kod pocztowy"> <br>
-    <input type="text" th:field="*{birthDate}" placeholder="DAta urodzenia"><br>
-    <input type="text" th:field="*{pesel}" placeholder="PESEL"><br>
-    <input type="email" th:field="*{login}" placeholder="Email"><br>
-    <input type="password" th:field="*{password}" placeholder="Haslo"><br>
-    <input type="text" th:field="*{phoneNumber}" placeholder="Numer Telefonu"><br>
+    <label>
+        <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">e</label>
+        <input type="text" th:field="*{firstName}" placeholder="Imie">
+    </label> <br>
+    <label>
+        <input type="text" th:field="*{lastName}" placeholder="Nazwisko">
+    </label><br>
+    <label>
+        <input type="text" th:field="*{city}" placeholder="Miasto"> <label></label>
+    </label><br>
+    <label>
+        <input type="text" th:field="*{street}" placeholder="Ulica">
+    </label><br>
+    <label>
+        <select type="text" th:field="*{country}" placeholder="Kraj"><br>
+            <option th:each="c : ${countries}" th:text="${c.plName}" th:value="${c.symbol}"></option>
+        </select>
+    </label><br>
+    <label>
+        <input type="text" th:field="*{zipCode}" placeholder="Kod pocztowy">
+    </label> <br>
+    <label>
+        <input type="text" th:field="*{birthDate}" placeholder="DAta urodzenia">
+    </label><br>
+    <label>
+        <input type="text" th:field="*{pesel}" placeholder="PESEL">
+    </label><br>
+    <label>
+        <label th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></label>
+        <input type="email" th:field="*{login}" placeholder="Email">
+    </label><br>
+    <label>
+        <input type="password" th:field="*{password}" placeholder="Haslo">
+    </label><br>
+    <label>
+        <input type="text" th:field="*{phoneNumber}" placeholder="Numer Telefonu">
+    </label><br>
     <label for="prefer">Wybieram email</label>
     <input id="prefer" type="checkbox" th:field="*{preferEmails}"><br>
     <button type="submit">Zarejestruj się</button>

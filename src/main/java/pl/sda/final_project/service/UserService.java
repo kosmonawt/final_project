@@ -18,7 +18,7 @@ public class UserService {
     public UserService(UserRepo userRepo, UserRoleRepo userRoleRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.userRoleRepo = userRoleRepo;
-        this.passwordEncoder = passwordEncoder;
+         this.passwordEncoder = passwordEncoder;
     }
 
 

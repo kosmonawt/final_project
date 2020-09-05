@@ -17,8 +17,8 @@ public class DataSeed implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        createRole(UserRole.Roles.ADMIN);
-        createRole(UserRole.Roles.USER);
+        //      createRole(UserRole.Roles.ADMIN);
+        //    createRole(UserRole.Roles.USER);
     }
 
     private void createRole(UserRole.Roles role) {
