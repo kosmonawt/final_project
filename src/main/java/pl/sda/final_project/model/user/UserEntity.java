@@ -10,10 +10,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-;
 
 @Entity
-public class User extends BaseEntity {
+
+public class UserEntity extends BaseEntity {
 
     private String firstName;
     private String lastName;
@@ -28,8 +28,8 @@ public class User extends BaseEntity {
     @ManyToMany
     private List<UserRole> roles;
 
-    public static User apply(RegistrationDto registrationDto, String pswdHash) {
-        User user = new User();
+    public static UserEntity apply(RegistrationDto registrationDto, String pswdHash) {
+        UserEntity user = new UserEntity();
         user.firstName = registrationDto.getFirstName();
         user.lastName = registrationDto.getLastName();
         user.login = registrationDto.getLogin();

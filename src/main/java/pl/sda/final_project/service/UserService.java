@@ -3,7 +3,7 @@ package pl.sda.final_project.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.final_project.dto.RegistrationDto;
-import pl.sda.final_project.model.user.User;
+import pl.sda.final_project.model.user.UserEntity;
 import pl.sda.final_project.model.user.UserRole;
 import pl.sda.final_project.repo.UserRepo;
 import pl.sda.final_project.repo.UserRoleRepo;
@@ -27,7 +27,7 @@ public class UserService {
         if (userWithEmailExists(registrationDto.getLogin())) {
             throw new RuntimeException("Użytkownik o emailu " + registrationDto.getLogin() + "istnieje");
         }
-        User userToSave = User.apply(registrationDto, pass);
+        UserEntity userToSave = UserEntity.apply(registrationDto, pass);
         userToSave.addRole(userRoleRepo.findByRoleName(UserRole.Roles.USER.name()));
         userRepo.save(userToSave);
 
