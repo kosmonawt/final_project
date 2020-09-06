@@ -1,11 +1,7 @@
 package pl.sda.final_project.weather;
 
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class Wind {
 
     private double speed;
@@ -15,5 +11,21 @@ public class Wind {
     public String toString() {
         return "speed=" + speed +
                 ", deg=" + deg ;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public double getDeg() {
+        return deg;
+    }
+
+    public void setDeg(double deg) {
+        this.deg = deg;
     }
 }
