@@ -11,15 +11,21 @@ import java.util.Set;
 @Service
 @SessionScope
 public class BasketService {
+    private final ProductService productService;
 
     private final Set<BasketItemDto> productList = new HashSet<>();
 
-    public void addProductToBasket(ProductDto productDto) {
-        BasketItemDto basketItemDto = new BasketItemDto(1, productDto);
+    public BasketService(ProductService productService) {
+        this.productService = productService;
+    }
+
+    public void addProductToBasket(Long id) {
+        ProductDto productById = productService.findProductById(id);
+        BasketItemDto basketItemDto = new BasketItemDto(1, productById);
         productList.add(basketItemDto);
     }
 
-    public Set<BasketItemDto> getProductList() {
+    public Set<BasketItemDto> getProducts() {
         return productList;
     }
 }

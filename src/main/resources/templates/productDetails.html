@@ -11,7 +11,18 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <script>
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+            $("#btn-add-to-basket").click(function () {
+                var id = $("#product-id").val()
+                $.post("/basket/" + id, function (data) {
+                    console.log("data send");
+                });
+            });
+            console.log("ready!");
+        });
+    </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -31,6 +42,11 @@
         </div>
     </div>
 </div>
+
+
+<div class="btn btn-success" id="btn-add-to-basket">Add to basket</div>
+
+<input type="hidden" th:value="${product.id}" id="product-id">
 
 </body>
 </html>
