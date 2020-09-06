@@ -52,4 +52,12 @@ public class UserEntity extends BaseEntity {
     private boolean roleExists(UserRole userRole) {
         return roles != null && roles.stream().anyMatch(r -> userRole.getRoleName().equals(r.getRoleName()));
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
 }

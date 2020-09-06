@@ -23,4 +23,8 @@ public class Address {
         address.zipCode = registrationDto.getZipCode();
         return address;
     }
+
+    public String getCity() {
+        return city;
+    }
 }
