@@ -28,7 +28,7 @@ public class ProductDto {
         productDto.setProductPrice(productEntity.getPrice());
         productDto.setAuthorName(productEntity.getAuthor().getAuthorName());
         productDto.setAuthorSurname((productEntity.getAuthor().getAuthorSurname()));
-
+        productDto.setProductImageUrl(productEntity.getImageUrl());
         productDto.setProductCategory(productCategoryDto);
 
 

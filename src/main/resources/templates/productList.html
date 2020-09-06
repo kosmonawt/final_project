@@ -21,7 +21,8 @@
             <div class="row" style="border: black solid 1px">
                 <div class="col-md-4" th:text="${product.productTitle}">
                 </div>
-                <img class="col-md-4" th:src="@{${product.productImageUrl}}">
+                <img class="col-md-4"
+                     th:src="@{${product.productImageUrl}}">
                 <div class="col-md-4" th:text="${product.productPrice}">
                 </div>
             </div>
