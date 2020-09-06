@@ -18,13 +18,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4" th:each="product : ${products}">
-            <div class="row" style="border: black solid 1px">
-                <div class="col-md-4" th:text="${product.productTitle}">
-                </div>
-                <img class="col-md-4"
-                     th:src="@{${product.productImageUrl}}">
-                <div class="col-md-4" th:text="${product.productPrice}">
-                </div>
+            <div>
+                <a th:href="@{'/product/'+${product.id}}">
+                    <div class="row" style="border: black solid 1px">
+                        <div class="col-md-4" th:text="${product.productTitle}">
+                        </div>
+                        <img class="col-md-4"
+                             th:src="@{${product.productImageUrl}}">
+                        <div class="col-md-4" th:text="${product.productPrice}">
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

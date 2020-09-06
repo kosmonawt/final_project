@@ -5,6 +5,7 @@ import pl.sda.final_project.model.product.ProductEntity;
 import java.math.BigDecimal;
 
 public class ProductDto {
+    private Long id;
     private String productTitle;
     private String productDescription;
     private String productImageUrl;
@@ -22,6 +23,7 @@ public class ProductDto {
         productCategoryDto.setProductCategoryTitle(productEntity.getCategory().getTitle());
 
         ProductDto productDto = new ProductDto();
+        productDto.setId(productEntity.getId());
         productDto.setProductTitle(productEntity.getTitle());
         productDto.setProductDescription(productEntity.getDescription());
         productDto.setProductType(productEntity.getProductType().getPlName());
@@ -102,5 +104,13 @@ public class ProductDto {
 
     public void setProductCategory(ProductCategoryDto productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

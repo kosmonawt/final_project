@@ -25,8 +25,7 @@ public class ProductService {
 
     public void saveProduct(ProductDto productDto) {
         ProductEntity productEntityToSave = ProductEntity.apply(productDto);
-        Long productCategoryId = productDto.getProductCategory().getProductCategoryId();
-        ProductCategoryEntity category = productCategoryService.findCategoryById(productCategoryId)
+        ProductCategoryEntity category = productCategoryService.findCategoryById(productDto.getProductCategory().getProductCategoryId())
                 .orElseThrow(() -> new RuntimeException("Can't find category"));
         productEntityToSave.setCategory(category);
         productRepo.save(productEntityToSave);
@@ -42,4 +41,9 @@ public class ProductService {
     }
 
 
+    public ProductDto findProductById(Long id) {
+        return productRepo.findById(id)
+                .map(ProductDto::apply)
+                .orElseThrow(() -> new RuntimeException("Blow up in product service"));
+    }
 }
