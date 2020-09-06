@@ -25,7 +25,8 @@ public class ProductService {
 
     public void saveProduct(ProductDto productDto) {
         ProductEntity productEntityToSave = ProductEntity.apply(productDto);
-        ProductCategoryEntity category = productCategoryService.findCategoryById(productDto.getProductCategoryId())
+        Long productCategoryId = productDto.getProductCategory().getProductCategoryId();
+        ProductCategoryEntity category = productCategoryService.findCategoryById(productCategoryId)
                 .orElseThrow(() -> new RuntimeException("Can't find category"));
         productEntityToSave.setCategory(category);
         productRepo.save(productEntityToSave);

@@ -9,36 +9,33 @@ public class ProductDto {
     private String productDescription;
     private String productImageUrl;
 
-    private Long productCategoryId;
-    private String productCategoryTitle;
+    private ProductCategoryDto productCategory;
     private BigDecimal productPrice;
     private String productType;
     private String authorName;
     private String authorSurname;
 
     public static ProductDto apply(ProductEntity productEntity) {
+        ProductCategoryDto productCategoryDto = new ProductCategoryDto();
+
+        productCategoryDto.setProductCategoryId(productEntity.getCategory().getId());
+        productCategoryDto.setProductCategoryTitle(productEntity.getCategory().getTitle());
 
         ProductDto productDto = new ProductDto();
         productDto.setProductTitle(productEntity.getTitle());
         productDto.setProductDescription(productEntity.getDescription());
-        productDto.setProductCategoryId(productEntity.getCategory().getId());
-        productDto.setProductCategoryTitle(productEntity.getCategory().getTitle());
         productDto.setProductType(productEntity.getProductType().getPlName());
         productDto.setProductPrice(productEntity.getPrice());
         productDto.setAuthorName(productEntity.getAuthor().getAuthorName());
         productDto.setAuthorSurname((productEntity.getAuthor().getAuthorSurname()));
 
+        productDto.setProductCategory(productCategoryDto);
+
+
         return productDto;
 
     }
 
-    public Long getProductCategoryId() {
-        return productCategoryId;
-    }
-
-    public void setProductCategoryId(Long productCategoryId) {
-        this.productCategoryId = productCategoryId;
-    }
 
     public String getProductTitle() {
         return productTitle;
@@ -98,11 +95,12 @@ public class ProductDto {
         this.authorSurname = authorSurname;
     }
 
-    public String getProductCategoryTitle() {
-        return productCategoryTitle;
+
+    public ProductCategoryDto getProductCategory() {
+        return productCategory;
     }
 
-    public void setProductCategoryTitle(String productCategoryTitle) {
-        this.productCategoryTitle = productCategoryTitle;
+    public void setProductCategory(ProductCategoryDto productCategory) {
+        this.productCategory = productCategory;
     }
 }
