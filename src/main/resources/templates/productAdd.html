@@ -3,42 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <title>Product add form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container-bg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!--    <a class="navbar-brand" href="#">Navbar</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<form action="/product/add" method="post" th:object="${productToSave}">
-    <div class="form-group">
-        <label for="pTitle">Tytul produktu</label>
-        <input class="form-control" id="pTitle" type="text" th:field="*{productTitle}" placeholder="Tytuł produktu">
-        <br>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/add">Add product to list</a>
+                </li>
+
+            </ul>
+            <li class="nav-item dropdown nav navbar-nav navbar-right">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User settings
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/logout">Wyloguj</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+
+                </div>
+            </li>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Add product</div>
+                    <div class="card-body">
+
+                        <form action="/product/add" method="post" th:object="${productToSave}">
+                            <div class="form-group">
+                                <label for="pTitle" class="cols-sm-2 control-label">Product title</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" th:field="*{productTitle}"
+                                               name="productTitle"
+                                               id="pTitle" placeholder="Enter product title"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pDescribe" class="cols-sm-2 control-label">Product description</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" th:field="*{productDescription}"
+                                               name="productDescription"
+                                               id="pDescribe" placeholder="Describe product"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pLink" class="cols-sm-2 control-label">Product img URL</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" th:field="*{productImageUrl}"
+                                               name="productDescription"
+                                               id="pLink" placeholder="Describe product"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pCategory" class="cols-sm-2 control-label">Choose product category</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <select class="browser-default custom-select" id="pCategory" type="text"
+                                                th:field="*{productCategory.productCategoryId}">
+                                            <option th:each="pc : ${productCategories}"
+                                                    th:text="${pc.productCategoryTitle}"
+                                                    th:value="${pc.productCategoryId}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pPrice" class="cols-sm-2 control-label">Enter product price</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="number" class="form-control" th:field="*{productPrice}"
+                                               name="productDescription"
+                                               id="pPrice" placeholder="Enter product price"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pType" class="cols-sm-2 control-label">Choose product type</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <select id="pType" class="cols-sm-2 control-label" type="text"
+                                                th:field="*{productType}">
+                                            <option th:each="c : ${productTypes}" th:text="${c.plName}"
+                                                    th:value="${c.name()}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pAuthorName" class="cols-sm-2 control-label">Enter author name</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" th:field="*{authorName}"
+                                               name="productDescription"
+                                               id="pAuthorName" placeholder="Author name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pAuthorSurname" class="cols-sm-2 control-label">Enter author surname</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" th:field="*{authorSurname}"
+                                               name="productDescription"
+                                               id="pAuthorSurname" placeholder="Author surname"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <button type="submit" class="btn btn-danger btn-lg btn-block">Add product</button>
+                            </div>
+                            <button type="reset" class="btn btn-outline-primary">Clear form</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <input type="text" th:field="*{productDescription}" placeholder="Opis produktu"><br>
-    <input type="text" th:field="*{productImageUrl}" placeholder="Image Url"><br>
-
-    <select class="form-control" type="text" th:field="*{productCategory.productCategoryId}" placeholder="Kategoria produktu"><br>
-        <option th:each="pc : ${productCategories}" th:text="${pc.productCategoryTitle}" th:value="${pc.productCategoryId}"></option>
-    </select>
-
-    <input type="number" th:field="*{productPrice}" placeholder="Cena produktu"><br>
-
-    <select class="form-control" type="text" th:field="*{productType}" placeholder="Typ produktu"><br>
-        <option th:each="c : ${productTypes}" th:text="${c.plName}" th:value="${c.name()}"></option>
-    </select>
-    <br>
-    <input type="text" th:field="*{authorName}" placeholder="Imie autora"><br>
-    <input type="text" th:field="*{authorSurname}" placeholder="Nazwisko autora"><br>
-    <button class="btn-danger" type="submit">Dodaj produkt</button>
-    <br>
-    <button class="btn-info" type="reset">RESET</button>
-</form>
-
+</div>
 </body>
 </html>
