@@ -12,6 +12,7 @@ public class HomePageController {
 
     private final WeatherService weatherService;
     private final UserService userService;
+
     public HomePageController(WeatherService weatherService, UserService userService) {
         this.weatherService = weatherService;
         this.userService = userService;
@@ -19,7 +20,11 @@ public class HomePageController {
 
     @GetMapping("/")
     public ModelAndView showMainWithWeather() {
-        double cityTemperature = weatherService.getCityTemperature(userService.getCurrentUser().getUserCity());
+
+        // double cityTemperature = weatherService.getCityTemperature(userService.getCurrentUser().getUserCity());
+
+        double cityTemperature = 22;
+
         return new ModelAndView("index",
                 "temperature",
                 cityTemperature);
