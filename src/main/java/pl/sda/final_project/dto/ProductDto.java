@@ -3,6 +3,7 @@ package pl.sda.final_project.dto;
 import pl.sda.final_project.model.product.ProductEntity;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class ProductDto {
     private Long id;
@@ -112,5 +113,18 @@ public class ProductDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductDto that = (ProductDto) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

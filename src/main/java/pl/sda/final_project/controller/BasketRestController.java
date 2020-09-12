@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.sda.final_project.dto.BasketItemDto;
 import pl.sda.final_project.service.BasketService;
 
+import java.util.Collection;
 import java.util.Set;
 
 @RestController
@@ -22,7 +23,7 @@ public class BasketRestController {
     }
 
     @GetMapping
-    public Set<BasketItemDto> showBasket() {
+    public Collection<BasketItemDto> showBasket() {
         return basketService.getProducts();
     }
 
