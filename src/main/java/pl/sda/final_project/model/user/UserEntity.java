@@ -22,6 +22,11 @@ public class UserEntity extends BaseEntity {
     private LocalDate birthDate;
     private String pesel;
     private String login;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private String password;
     private String phoneNumber;
     private boolean preferEmails;
@@ -59,5 +64,9 @@ public class UserEntity extends BaseEntity {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getLogin() {
+        return login;
     }
 }

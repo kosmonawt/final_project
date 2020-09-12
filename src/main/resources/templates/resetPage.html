@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
@@ -69,21 +69,16 @@
     </div>
     <br>
     <div class="login-form">
-        <form action="/login-proces" method="post">
-            <h2 class="text-center">Log in</h2>
+        <form action="/resetpswd" th:object="${resetForm}" method="post">
+            <h2 class="text-center">Reset password</h2>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email" name="username" required="required">
+                <input type="email" th:field="*{login}" class="form-control" placeholder="Email" name="username" required="required">
             </div>
+
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+                <button type="submit" class="btn btn-primary btn-block">Forgot password</button>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
-            </div>
-            <div class="form-group">
-                <a href="/resetpswd"  class="btn btn-primary btn-block">Forgot password</a>
-            </div>
-            <!--      <div class="clearfix">
+                  <!--      <div class="clearfix">
                       <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
                       <a href="#" class="pull-right">Forgot Password?</a>
                   </div>-->
