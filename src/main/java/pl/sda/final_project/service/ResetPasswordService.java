@@ -7,7 +7,6 @@ import pl.sda.final_project.model.user.UserEntity;
 import pl.sda.final_project.repo.ResetPasswordRepo;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class ResetPasswordService {
