@@ -10,6 +10,7 @@ import pl.sda.final_project.model.product.ProductEntity;
 import pl.sda.final_project.repo.ProductRepo;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,5 +46,14 @@ public class ProductService {
         return productRepo.findById(id)
                 .map(ProductDto::apply)
                 .orElseThrow(() -> new RuntimeException("Blow up in product service"));
+    }
+
+    public boolean deleteProductById(Long id) {
+
+        if (productRepo.findById(id).isPresent()) {
+            productRepo.deleteById(id);
+            return true;
+        } else
+            return false;
     }
 }

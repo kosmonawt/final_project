@@ -1,8 +1,10 @@
 package pl.sda.final_project.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.final_project.service.ProductService;
 
@@ -21,4 +23,12 @@ public class ProductDetailController {
         return new ModelAndView("productDetails", "product", productService.findProductById(id));
     }
 
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+
+        if (productService.deleteProductById(id)) {
+            return "/index";
+        } else
+            return "cantFindProduct";
+    }
 }
