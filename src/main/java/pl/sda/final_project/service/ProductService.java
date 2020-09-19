@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import pl.sda.final_project.dto.ProductDto;
 import pl.sda.final_project.model.product.ProductCategoryEntity;
 import pl.sda.final_project.model.product.ProductEntity;
+import pl.sda.final_project.model.product.ProductType;
 import pl.sda.final_project.repo.ProductRepo;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,5 +58,21 @@ public class ProductService {
             return true;
         } else
             return false;
+    }
+
+    public boolean updateProduct(Long id, ProductDto product) {
+
+        if (productRepo.findById(id).isPresent()) {
+            ProductEntity productToSave = productRepo.findById(id).get();
+            Long productCategoryId = product.getProductCategory().getProductCategoryId();
+            productToSave.setTitle(product.getProductTitle());
+            productToSave.setDescription(product.getProductDescription());
+            productToSave.setImageUrl(product.getProductImageUrl());
+            productToSave.setPrice(product.getProductPrice());
+            productToSave.setCategory(productCategoryService.findCategoryById(productCategoryId).orElseThrow(() -> new RuntimeException("Category not found")));
+            productToSave.setProductType(ProductType.valueOf(product.getProductType()));
+            productRepo.save(productToSave);
+            return true;
+        } else return false;
     }
 }

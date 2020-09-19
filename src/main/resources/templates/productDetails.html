@@ -32,11 +32,16 @@
 
                     </div>
                 </div>
+                <br>
                 <div class="form-group btn btn-success" id="btn-add-to-basket">Add to basket</div>
                 <input type="hidden" th:value="${product.id}" id="product-id">
+                <br>
                 <form th:action="@{'/delete/' + ${product.id}}" method="post">
                     <button class="btn btn-danger" value="delete">Delete</button>
                 </form>
+                <br>
+                <a th:href="@{'/update/' + ${product.id}}" class="btn btn-warning">Update information</a>
+
                 <!--  <div class="btn btn-success" id="btn-show-basket">Show basket</div>-->
             </div>
         </div>

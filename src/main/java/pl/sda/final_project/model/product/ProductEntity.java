@@ -1,7 +1,7 @@
 package pl.sda.final_project.model.product;
 
 import pl.sda.final_project.dto.ProductDto;
-import pl.sda.final_project.model.user.BaseEntity;
+import pl.sda.final_project.model.BaseEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 
 @Entity
 public class ProductEntity extends BaseEntity {
-
 
     private String title;
     private String description;
@@ -23,8 +22,6 @@ public class ProductEntity extends BaseEntity {
     private Author author;
 
     public static ProductEntity apply(ProductDto productDto) {
-
-
         ProductEntity productEntityToSave = new ProductEntity();
         productEntityToSave.title = productDto.getProductTitle();
         productEntityToSave.description = productDto.getProductDescription();
@@ -32,7 +29,11 @@ public class ProductEntity extends BaseEntity {
         productEntityToSave.price = productDto.getProductPrice();
         productEntityToSave.author = Author.apply(productDto);
         productEntityToSave.productType = ProductType.valueOf(productDto.getProductType());
+
         return productEntityToSave;
+    }
+
+    public ProductEntity() {
     }
 
     public String getTitle() {

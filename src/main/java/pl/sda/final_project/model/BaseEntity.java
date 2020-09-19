@@ -1,6 +1,6 @@
-package pl.sda.final_project.model.user;
+package pl.sda.final_project.model;
 
-import org.springframework.data.domain.Pageable;
+import pl.sda.final_project.model.product.ProductEntity;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -14,6 +14,7 @@ public class BaseEntity {
 
     @Version
     private Long version; //optimistic locking
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -21,7 +22,6 @@ public class BaseEntity {
         BaseEntity that = (BaseEntity) o;
         return Objects.equals(id, that.id);
     }
-
 
     @Override
     public int hashCode() {
@@ -31,4 +31,6 @@ public class BaseEntity {
     public Long getId() {
         return id;
     }
+
+
 }

@@ -1,6 +1,7 @@
 package pl.sda.final_project.model.user;
 
 import pl.sda.final_project.dto.RegistrationDto;
+import pl.sda.final_project.model.BaseEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

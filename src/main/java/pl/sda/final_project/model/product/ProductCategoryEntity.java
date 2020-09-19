@@ -1,6 +1,6 @@
 package pl.sda.final_project.model.product;
 
-import pl.sda.final_project.model.user.BaseEntity;
+import pl.sda.final_project.model.BaseEntity;
 
 import javax.persistence.Entity;
 

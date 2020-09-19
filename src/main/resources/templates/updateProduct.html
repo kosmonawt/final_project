@@ -16,10 +16,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Add product</div>
+                    <div class="card-header">Update product information</div>
                     <div class="card-body">
 
-                        <form action="/product/add" method="post" th:object="${productToSave}">
+                        <form th:action="@{'/update/' + ${updateProduct.id}}" method="post"
+                              th:object="${updateProduct}">
                             <div class="form-group">
                                 <label for="pTitle" class="cols-sm-2 control-label">Product title</label>
                                 <div class="cols-sm-10">
@@ -27,7 +28,7 @@
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                         <input type="text" class="form-control" th:field="*{productTitle}"
                                                name="productTitle"
-                                               id="pTitle" placeholder="Enter product title"/>
+                                               id="pTitle" th:placeholder="${updateProduct.productTitle}"/>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                         <input type="text" class="form-control" th:field="*{productDescription}"
                                                name="productDescription"
-                                               id="pDescribe" placeholder="Describe product"/>
+                                               id="pDescribe" th:placeholder="${updateProduct.productDescription}"/>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +50,7 @@
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                         <input type="text" class="form-control" th:field="*{productImageUrl}"
                                                name="productDescription"
-                                               id="pLink" placeholder="Enter product image URL"/>
+                                               id="pLink" th:placeholder="${updateProduct.productImageUrl}"/>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +75,7 @@
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                         <input type="number" class="form-control" th:field="*{productPrice}"
                                                name="productDescription"
-                                               id="pPrice" placeholder="Enter product price"/>
+                                               id="pPrice" th:placeholder="${updateProduct.productPrice}"/>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +99,7 @@
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                         <input type="text" class="form-control" th:field="*{authorName}"
                                                name="productDescription"
-                                               id="pAuthorName" placeholder="Author name"/>
+                                               id="pAuthorName" th:placeholder="${updateProduct.authorName}"/>
                                     </div>
                                 </div>
                             </div>
@@ -109,14 +110,14 @@
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                         <input type="text" class="form-control" th:field="*{authorSurname}"
                                                name="productDescription"
-                                               id="pAuthorSurname" placeholder="Author surname"/>
+                                               id="pAuthorSurname" th:placeholder="${updateProduct.authorSurname}"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <button type="submit" class="btn btn-danger btn-lg btn-block">Add product</button>
+                                <button type="submit" class="btn btn-danger btn-lg btn-block">Update product information</button>
                             </div>
-                            <button type="reset" class="btn btn-outline-primary">Clear form</button>
+                            <a th:href="@{'/product/' + ${updateProduct.id}}" class="btn btn-outline-primary">Cancel</a>
                         </form>
                     </div>
                 </div>

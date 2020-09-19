@@ -1,5 +1,7 @@
 package pl.sda.final_project.model.user;
 
+import pl.sda.final_project.model.BaseEntity;
+
 import javax.persistence.Entity;
 
 @Entity
