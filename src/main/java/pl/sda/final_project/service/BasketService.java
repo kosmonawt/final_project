@@ -5,7 +5,9 @@ import org.springframework.web.context.annotation.SessionScope;
 import pl.sda.final_project.dto.BasketItemDto;
 import pl.sda.final_project.dto.ProductDto;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @SessionScope

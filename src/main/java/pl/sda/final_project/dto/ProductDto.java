@@ -3,6 +3,7 @@ package pl.sda.final_project.dto;
 import pl.sda.final_project.model.product.ProductEntity;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class ProductDto {
@@ -127,4 +128,6 @@ public class ProductDto {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

@@ -11,9 +11,6 @@ import pl.sda.final_project.model.product.ProductType;
 import pl.sda.final_project.repo.ProductRepo;
 
 import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,6 +37,7 @@ public class ProductService {
         Page<ProductEntity> page = productRepo.findAll(pageable);
         List<ProductDto> collect = page.stream()
                 .map(ProductDto::apply)
+
                 .collect(Collectors.toList());
         return new PageImpl<>(collect, pageable, page.getTotalElements());
     }

@@ -20,7 +20,15 @@
 
         <script>
             $(document).ready(function () {
+
+                $("#btn-add-to-basket").click(function () {
+                    var id = $("#product-id").val()
+                    $.post("/basket/" + id, function () {
+                        console.log("data send");
+                    });
+                });
                 console.log("loaded")
+
                 $("#show-basket").click(function () {
                     console.log("show basket")
                     $.get("/basket/", function (data) {

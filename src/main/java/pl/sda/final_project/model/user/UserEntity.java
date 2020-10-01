@@ -70,4 +70,20 @@ public class UserEntity extends BaseEntity {
     public String getLogin() {
         return login;
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address +
+                ", birthDate=" + birthDate +
+                ", pesel='" + pesel + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", preferEmails=" + preferEmails +
+                ", roles=" + roles +
+                '}';
+    }
 }

@@ -5,7 +5,6 @@ import pl.sda.final_project.dto.BasketItemDto;
 import pl.sda.final_project.service.BasketService;
 
 import java.util.Collection;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/basket")
